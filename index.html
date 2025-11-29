@@ -58,8 +58,6 @@
         so I can fix them when I wake up.
     </div>
 
-
-
     <br>
     <label for="craft_type">Type:</label>
     <select id="craft_type">
@@ -86,17 +84,16 @@
             ores = oresData;
             weaponOdds = wOdds;
             armorOdds = aOdds;
+            setupOreSearch(ores);
         }).catch(err => console.error("Failed to load JSON:", err));
 
-
-        // After loading ores.json
+        // Setup ore search inputs
         function setupOreSearch(ores) {
             const oreNames = Object.keys(ores);
 
             document.querySelectorAll(".ore-search").forEach((input, index) => {
                 const optionsList = document.getElementById(`options${index + 1}`);
 
-                // Populate options list
                 oreNames.forEach(ore => {
                     const li = document.createElement("li");
                     li.textContent = ore;
@@ -107,7 +104,6 @@
                     optionsList.appendChild(li);
                 });
 
-                // Filter options on input
                 input.addEventListener("input", () => {
                     const filter = input.value.toLowerCase();
                     let hasVisible = false;
@@ -122,7 +118,6 @@
                     optionsList.style.display = hasVisible ? "block" : "none";
                 });
 
-                // Hide options if clicked outside
                 document.addEventListener("click", e => {
                     if (!input.contains(e.target) && !optionsList.contains(e.target)) {
                         optionsList.style.display = "none";
@@ -131,7 +126,7 @@
             });
         }
 
-        // CLEAR BUTTON LOGIC
+        // Clear buttons logic
         document.querySelectorAll(".ore-search").forEach(input => {
             const clearBtn = input.parentElement.querySelector(".clear-btn");
 
@@ -142,30 +137,12 @@
             clearBtn.addEventListener("click", () => {
                 input.value = "";
                 clearBtn.style.display = "none";
-
                 const listId = "options" + input.id.replace("name", "");
                 const list = document.getElementById(listId);
                 if (list) list.style.display = "none";
-
                 input.focus();
             });
         });
-
-
-        // After ores.json is loaded
-        Promise.all([
-            fetch("ores.json").then(res => res.json()),
-            fetch("weaponOdds.json").then(res => res.json()),
-            fetch("armorOdds.json").then(res => res.json())
-        ]).then(([oresData, wOdds, aOdds]) => {
-            ores = oresData;
-            weaponOdds = wOdds;
-            armorOdds = aOdds;
-            setupOreSearch(ores);
-        }).catch(err => console.error("Failed to load JSON:", err));
-
-
-
 
         function calculateCombinedMultiplier(selectedOres) {
             let totalMultiplier = 0;
@@ -185,6 +162,11 @@
             return y / 100;
         }
 
+        // Helper to calculate individual trait value
+        function calculateTraitValue(maxStat, multiplier, oreAmount) {
+            return (maxStat * multiplier * oreAmount).toFixed(2);
+        }
+
         function getItemChancesWithTraits(selectedOres, craftType = "Weapon") {
             const oddsDict = craftType === "Weapon" ? weaponOdds : armorOdds;
             const combinedMultiplier = calculateCombinedMultiplier(selectedOres);
@@ -199,21 +181,41 @@
             }
 
             const traits = [];
-            for (const [ore, pct] of Object.entries(composition)) {
-                const oreData = ores[ore];
-                if (!oreData || !oreData.trait) continue;
 
-                if (pct >= 10 && (oreData.traitType === craftType || oreData.traitType === "All")) {
-                    const transferredFraction = calculateTransferredStat(pct);
-                    const maxStat = oreData.trait.maxStat || 0;
-                    const traitDesc = oreData.trait.description || oreData.trait;
+            for (const [oreName, pct] of Object.entries(composition)) {
+                const oreData = ores[oreName];
+                if (!oreData || !Array.isArray(oreData.traits)) continue;
 
-                    if (maxStat > 0) {
-                        const transferredStat = transferredFraction * maxStat;
-                        traits.push(`${transferredStat.toFixed(2)}% ${traitDesc}`);
-                    } else {
-                        traits.push(`${traitDesc}`);
+                if (oreData.traitType !== "All" && oreData.traitType !== craftType) continue;
+                if (pct < 10) continue;
+
+                const transferredFraction = calculateTransferredStat(pct);
+
+                let oreTraitParts = [];
+
+                for (let i = 0; i < oreData.traits.length; i++) {
+                    const t1 = oreData.traits[i];
+                    if (typeof t1.maxStat !== "number") continue;
+
+                    const v1 = (transferredFraction * t1.maxStat).toFixed(2);
+                    let line = `${v1}% ${t1.description}`;
+
+                    // Merge sentence-style traits (like "with")
+                    let shouldMerge = t1.description.trim().match(/(with|of|for|per|to|in)$/i)
+                        && oreData.traits[i + 1] && typeof oreData.traits[i + 1].maxStat === "number";
+
+                    if (shouldMerge) {
+                        const t2 = oreData.traits[i + 1];
+                        const v2 = (transferredFraction * t2.maxStat).toFixed(2);
+                        line += ` ${v2}% ${t2.description}`;
+                        i++; // Skip next
                     }
+
+                    oreTraitParts.push(line);
+                }
+
+                if (oreTraitParts.length) {
+                    traits.push(oreTraitParts.join(", "));
                 }
             }
 
@@ -246,17 +248,10 @@
                 const name = document.getElementById(`name${i}`).value.trim();
                 const amt = parseFloat(document.getElementById(`amt${i}`).value);
 
-                // Track rows with an amount but no ore name
-                if (!name && !isNaN(amt) && amt > 0) {
-                    emptyOreIndexes.push(i);
-                }
-
+                if (!name && !isNaN(amt) && amt > 0) emptyOreIndexes.push(i);
                 if (name && !isNaN(amt) && amt > 0) {
-                    if (ores[name]) {
-                        selected[name] = amt;
-                    } else {
-                        invalidOres.push(name);
-                    }
+                    if (ores[name]) selected[name] = amt;
+                    else invalidOres.push(name);
                 }
             }
 
@@ -302,8 +297,6 @@
 
             document.getElementById("result").innerText = output;
         });
-
-
     </script>
 </body>
 
