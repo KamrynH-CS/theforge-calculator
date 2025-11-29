@@ -1,21 +1,26 @@
 body {
     font-family: Arial;
     padding: 30px;
-    background-color: #1e1e1e;
-    /* dark background */
-    color: #e0e0e0;
-    /* light text */
+    background-color: #1e1e1e; /* dark background */
+    color: #e0e0e0; /* light text */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+main {
+    flex: 1;
+    padding-right: 20px;
 }
 
 input,
 select {
     margin: 5px;
-    background-color: #2b2b2b;
-    /* dark input fields */
-    color: #ffffff;
-    /* white text */
-    border: 1px solid #555;
-    /* subtle border */
+    background-color: #2b2b2b; /* dark input fields */
+    color: #ffffff; /* white text */
+    border: 1px solid #555; /* subtle border */
     padding: 6px;
 }
 
@@ -53,47 +58,32 @@ button:hover {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
-
-    /* Bubble look */
     background: #2f2f31;
     border: 1px solid #3c3c3e;
     border-radius: 10px;
-
-    /* Size / spacing */
     min-width: 180px;
     max-height: 140px;
     padding: 6px 0;
     margin: 0;
-
-    /* “Floating” feel */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-
-    /* Functionality */
     list-style: none;
     overflow-y: auto;
     display: none;
     z-index: 9999;
-
-    /* Small autofill-style font */
     font-size: 14px;
 }
 
-/* List items inside */
 .ore-options li {
     padding: 8px 14px;
     cursor: pointer;
     color: #eaeaea;
-
-    /* Subtle transition like Chrome’s bubble */
     transition: background 0.15s ease;
 }
 
-/* Hover effect similar to autofill */
 .ore-options li:hover {
     background: #454547;
 }
 
-/* Scrollbar (Chrome-like) */
 .ore-options::-webkit-scrollbar {
     width: 6px;
 }
@@ -112,13 +102,11 @@ button:hover {
     display: inline-block;
     width: 100%;
     max-width: 220px;
-    /* fits your layout */
 }
 
 .clear-btn {
     position: absolute;
     right: 12px;
-    /* moved left */
     top: 50%;
     transform: translateY(-50%);
     width: 16px;
@@ -136,20 +124,10 @@ button:hover {
     opacity: 0.9;
 }
 
-
 .clear-btn:hover {
     background: #777;
     color: white;
     opacity: 1;
-}
-
-body {
-    display: flex;
-}
-
-main {
-    flex: 1;
-    padding-right: 20px;
 }
 
 .notice-box {
@@ -167,13 +145,14 @@ main {
     padding: 20px;
     background-color: #2b2b2b;
     border-left: 1px solid #555;
-    height: 100vh;
-    overflow-y: auto;
     position: sticky;
     top: 0;
     color: #e0e0e0;
     font-size: 14px;
     border-radius: 8px 0 0 8px;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 #update-log h2 {
@@ -191,4 +170,23 @@ main {
 #update-log li {
     margin-bottom: 10px;
     line-height: 1.4;
+}
+
+/* Responsive for mobile / small screens */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+    }
+
+    #update-log {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #555;
+        border-radius: 0 0 8px 8px;
+        margin-top: 20px;
+    }
+
+    main {
+        padding-right: 0;
+    }
 }
