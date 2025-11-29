@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Forge Calculator</title>
-        <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge Calculator</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+</head>
 
 <body>
     <h1>Forge Calculator</h1>
@@ -71,39 +69,53 @@
             return totalCount === 0 ? 0 : totalMultiplier / totalCount;
         }
 
+        function calculateTransferredStat(x) {
+            let y = 4.5 * x - 35;
+            if (y < 0) y = 0;
+            if (y > 100) y = 100;
+            return y / 100;
+        }
+
         function getItemChancesWithTraits(selectedOres, craftType = "Weapon") {
             const oddsDict = craftType === "Weapon" ? weaponOdds : armorOdds;
-
-            // Combined multiplier
             const combinedMultiplier = calculateCombinedMultiplier(selectedOres);
-
-            // Total count
             const totalCount = Object.values(selectedOres).reduce((a, b) => a + b, 0);
             const MAX_ODDS_ORE_COUNT = 55;
             const oddsKey = totalCount > MAX_ODDS_ORE_COUNT ? MAX_ODDS_ORE_COUNT : totalCount;
             const odds = oddsDict[oddsKey] || oddsDict[Math.max(...Object.keys(oddsDict))];
 
-            // Composition %
             const composition = {};
             for (const [ore, count] of Object.entries(selectedOres)) {
                 composition[ore] = (count / totalCount * 100);
             }
 
-            // Trait transfer
             const traits = [];
             for (const [ore, pct] of Object.entries(composition)) {
                 const oreData = ores[ore];
                 if (!oreData || !oreData.trait) continue;
+
                 if (pct >= 10 && (oreData.traitType === craftType || oreData.traitType === "All")) {
-                    traits.push(oreData.trait);
+                    const transferredFraction = calculateTransferredStat(pct);
+                    const maxStat = oreData.trait.maxStat || 0;
+                    const traitDesc = oreData.trait.description || oreData.trait;
+
+                    // Only add % if maxStat > 0
+                    if (maxStat > 0) {
+                        const transferredStat = transferredFraction * maxStat;
+                        traits.push(`${transferredStat.toFixed(2)}% ${traitDesc}`);
+                    } else {
+                        // Just display the description without percentage
+                        traits.push(`${traitDesc}`);
+                    }
                 }
             }
 
-            // Craft rarity
+
+            if (!traits.length) traits.push("No traits transfer");
+
             const highestOre = Object.entries(composition).reduce((a, b) => b[1] > a[1] ? b : a, ["", 0])[0];
             const rarity = ores[highestOre]?.rarity || "Unknown";
 
-            // Sort odds
             const sortedOdds = Object.fromEntries(
                 Object.entries(odds).filter(([k, v]) => v > 0)
                     .sort((a, b) => b[1] - a[1])
@@ -114,13 +126,12 @@
                 totalCount,
                 composition,
                 odds: sortedOdds,
-                traits: traits.length ? traits : ["No traits transfer"],
+                traits,
                 rarity
             };
         }
 
         document.getElementById("calculateBtn").addEventListener("click", () => {
-            // Read inputs
             const selected = {};
             for (let i = 1; i <= 4; i++) {
                 const name = document.getElementById(`name${i}`).value.trim();
@@ -129,8 +140,8 @@
                     selected[name] = amt;
                 }
             }
-            const craftType = document.getElementById("craft_type").value;
 
+            const craftType = document.getElementById("craft_type").value;
             const totalCount = Object.values(selected).reduce((a, b) => a + b, 0);
 
             if (totalCount < 3) {
@@ -140,17 +151,13 @@
 
             const result = getItemChancesWithTraits(selected, craftType);
 
-            // Build output
             let output = "";
-
-            // Warning if over 55 ores
             if (totalCount > 55) {
                 output += "⚠️ Ore total above 55! Showing stats for 55 ores only.\n\n";
             }
 
             output += `Rarity: ${result.rarity}\n`;
             output += `Combined Multiplier: ${result.combinedMultiplier.toFixed(2)}\n\nComposition:\n`;
-
             for (const [ore, pct] of Object.entries(result.composition)) {
                 output += `  ${ore}: ${pct.toFixed(1)}%\n`;
             }

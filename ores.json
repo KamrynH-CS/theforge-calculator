@@ -3,264 +3,396 @@
         "rarity": "Common",
         "multiplier": 0.2,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Sand Stone": {
         "rarity": "Common",
         "multiplier": 0.25,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Copper Ore": {
         "rarity": "Common",
         "multiplier": 0.3,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Iron Ore": {
         "rarity": "Common",
         "multiplier": 0.35,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Tin Ore": {
         "rarity": "Uncommon",
         "multiplier": 0.425,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Silver Ore": {
         "rarity": "Uncommon",
         "multiplier": 0.5,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Gold Ore": {
         "rarity": "Uncommon",
         "multiplier": 0.65,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Mushroomite Ore": {
         "rarity": "Rare",
         "multiplier": 0.8,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Platinum Ore": {
         "rarity": "Rare",
         "multiplier": 0.8,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Bananite Ore": {
         "rarity": "Uncommon",
         "multiplier": 0.85,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Cardboardite Ore": {
         "rarity": "Common",
         "multiplier": 0.7,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Aite Ore": {
         "rarity": "Epic",
         "multiplier": 1.0,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Poopite Ore": {
         "rarity": "Epic",
         "multiplier": 1.2,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Cobalt Ore": {
         "rarity": "Uncommon",
         "multiplier": 1.0,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Titanium Ore": {
         "rarity": "Uncommon",
         "multiplier": 1.15,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Lapis Lazuli Ore": {
         "rarity": "Uncommon",
         "multiplier": 1.3,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Volcanic Rock": {
         "rarity": "Rare",
         "multiplier": 1.55,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Quartz Ore": {
         "rarity": "Rare",
         "multiplier": 1.5,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Amethyst Ore": {
         "rarity": "Rare",
         "multiplier": 1.65,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Topaz Ore": {
         "rarity": "Rare",
         "multiplier": 1.75,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Diamond Ore": {
         "rarity": "Rare",
         "multiplier": 2.0,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Sapphire Ore": {
         "rarity": "Rare",
         "multiplier": 2.25,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Cuprite Ore": {
         "rarity": "Epic",
         "multiplier": 2.43,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Obsidian Ore": {
         "rarity": "Epic",
         "multiplier": 2.35,
         "traitType": "Armor",
-        "trait": "30% Vitality"
+        "trait": {
+            "description": "Vitality",
+            "maxStat": 30
+        }
     },
     "Emerald Ore": {
         "rarity": "Epic",
         "multiplier": 2.55,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Ruby Ore": {
         "rarity": "Epic",
         "multiplier": 2.95,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Rivalite Ore": {
         "rarity": "Epic",
         "multiplier": 3.33,
         "traitType": "Weapon",
-        "trait": "+20% Critical Strike Chance on Weapons"
+        "trait": {
+            "description": "Crit Chance on Weapons",
+            "maxStat": 20
+        }
     },
     "Uranium Ore": {
         "rarity": "Legendary",
         "multiplier": 3.0,
         "traitType": "Armor",
-        "trait": "5% Player Max HP as AOE Damage on Armor"
+        "trait": {
+            "description": "max HP AOE Damage on Armor",
+            "maxStat": 5
+        }
     },
     "Mythril Ore": {
         "rarity": "Legendary",
         "multiplier": 3.5,
         "traitType": "Armor",
-        "trait": "1.5% > 8.25% > 15% Vtality"
+        "trait": {
+            "description": "Vitality",
+            "maxStat": 15
+        }
     },
     "Eye Ore": {
         "rarity": "Legendary",
         "multiplier": 4.0,
         "traitType": "All",
-        "trait": "-10% Health, +15% Damage"
+        "trait": {
+            "description": "Weapon Damage, -10% Health",
+            "maxStat": 15
+        }
     },
     "Fireite Ore": {
         "rarity": "Legendary",
         "multiplier": 4.5,
         "traitType": "Weapon",
-        "trait": "20% Burn for 2 Seconds with 30% On-Hit Chance"
+        "trait": {
+            "description": "Burn Chance on Weapons (Might be Missing %)",
+            "maxStat": 20
+        }
     },
     "Magmaite Ore": {
         "rarity": "Legendary",
         "multiplier": 5.0,
         "traitType": "Weapon",
-        "trait": "50% AOE Explosion Damage with 35% On-Hit Chance"
+        "trait": {
+            "description": "AOE Explosion on Weapons (Might be Missing %)",
+            "maxStat": 50
+        }
     },
     "Lightite Ore": {
         "rarity": "Legendary",
         "multiplier": 4.6,
         "traitType": "Armor",
-        "trait": "1-10% Move Speed Bonus"
+        "trait": {
+            "description": "Bonus Movement Speed",
+            "maxStat": 15
+        }
     },
     "Demonite Ore": {
         "rarity": "Mythical",
         "multiplier": 5.5,
         "traitType": "Armor",
-        "trait": "20% Burn for 2 Seconds with 15% On-Ht Chance & Demon's Backfire Passive."
+        "trait": {
+            "description": "Burn & Demon's Backfire Passive (Need %)",
+            "maxStat": 0
+        }
     },
     "Darkryte Ore": {
         "rarity": "Mythical",
         "multiplier": 6.3,
         "traitType": "Armor",
-        "trait": "Shadow's Phantom Step Passive (15% Chance to Negate Damage)"
+        "trait": {
+            "description": "Shadow's Phantom Step Passive (15% Static?)",
+            "maxStat": 0
+        }
     },
     "Magenta Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 3.1,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Crimson Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 3.3,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Green Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 3.2,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Orange Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 3.0,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Blue Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 3.4,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Rainbow Crystal Ore": {
         "rarity": "Legendary",
         "multiplier": 5.25,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Arcane Crystal Ore": {
         "rarity": "Epic",
         "multiplier": 7.5,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Galaxite Ore": {
         "rarity": "Divine",
         "multiplier": 11.5,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     },
     "Vooite Ore": {
         "rarity": null,
         "multiplier": 0.0,
         "traitType": null,
-        "trait": null
+        "trait": {
+            "description": "",
+            "maxStat": 0
+        }
     }
 }
