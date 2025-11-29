@@ -1,101 +1,11 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Forge Calculator</title>
-
-    <!-- PyScript -->
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-
-    <style>
-      body { font-family: Arial; padding: 20px; color: #eee; background: #1a1a1a; }
-      select, input, button { padding: 6px; margin: 6px; }
-      #selectedList { margin-top: 10px; }
-      .ore-row { margin: 4px 0; }
-    </style>
-
-    <!-- Load Your Python File -->
-    <py-script src="theForgeCalculator.py"></py-script>
-  </head>
-
-  <body>
-
-    <h1>The Forge Calculator</h1>
-
-    <!-- UI SECTION -->
-    <label>Select an Ore:</label><br>
-    <select id="oreDropdown"></select>
-
-    <label>Amount:</label>
-    <input id="oreAmount" type="number" min="1" value="1" />
-
-    <button py-click="add_ore()">Add Ore</button>
-
-    <h3>Selected Ores:</h3>
-    <div id="selectedList"></div>
-
-    <label>Craft Type:</label>
-    <select id="craftType">
-      <option>Weapon</option>
-      <option>Armor</option>
-    </select>
-
-    <br><br>
-    <button py-click="calculate()">Calculate</button>
-
-    <h2>Results</h2>
-    <pre id="output"></pre>
-
-    <!-- PYTHON THAT CONNECTS UI TO YOUR PY FILE -->
-    <py-script>
-from js import document
-from theForgeCalculator import get_item_chances_with_traits, ores
-
-selected_ores = {}
-
-# Fill dropdown on load
-dropdown = document.getElementById("oreDropdown")
-for ore_name in ores.keys():
-    opt = document.createElement("option")
-    opt.text = ore_name
-    dropdown.add(opt)
-
-def add_ore():
-    ore = dropdown.value
-    amount = int(document.getElementById("oreAmount").value)
-
-    selected_ores[ore] = selected_ores.get(ore, 0) + amount
-
-    # update display list
-    sl = document.getElementById("selectedList")
-    sl.innerHTML = ""
-    for name, amt in selected_ores.items():
-        sl.innerHTML += f"{name}: {amt}<br>"
-
-def calculate():
-    craft_type = document.getElementById("craftType").value
-    result = get_item_chances_with_traits(selected_ores, ores, craft_type)
-
-    out = document.getElementById("output")
-    text = ""
-
-    text += f"Rarity: {result['rarity']}\n"
-    text += f"Combined Multiplier: {result['combined_multiplier']:.2f}\n\n"
-
-    text += "Composition:\n"
-    for ore, pct in result['composition'].items():
-        text += f"  {ore}: {pct:.1f}%\n"
-
-    text += "\nOdds:\n"
-    for k, v in result["odds"].items():
-        text += f"  {k}: {v*100:.1f}%\n"
-
-    text += "\nTraits:\n"
-    for t in result["traits"]:
-        text += f"  {t}\n"
-
-    out.textContent = text
-    </py-script>
-
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Page</title>
+</head>
+<body>
+    
+</body>
 </html>

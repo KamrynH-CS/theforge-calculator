@@ -1,0 +1,479 @@
+{
+    "3": {
+        "Dagger": 1.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "4": {
+        "Dagger": 0.86,
+        "Straight Sword": 0.14,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "5": {
+        "Dagger": 0.35,
+        "Straight Sword": 0.65,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "6": {
+        "Dagger": 0.14,
+        "Straight Sword": 0.86,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "7": {
+        "Dagger": 0.06,
+        "Straight Sword": 0.74,
+        "Gauntlet": 0.2,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "8": {
+        "Dagger": 0.02,
+        "Straight Sword": 0.44,
+        "Gauntlet": 0.54,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "9": {
+        "Dagger": 0.01,
+        "Straight Sword": 0.24,
+        "Gauntlet": 0.65,
+        "Katana": 0.0,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "10": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.11,
+        "Gauntlet": 0.47,
+        "Katana": 0.42,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "11": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.05,
+        "Gauntlet": 0.32,
+        "Katana": 0.63,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "12": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.03,
+        "Gauntlet": 0.22,
+        "Katana": 0.72,
+        "Great Sword": 0.0,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "13": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.01,
+        "Gauntlet": 0.14,
+        "Katana": 0.62,
+        "Great Sword": 0.22,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "14": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.01,
+        "Gauntlet": 0.08,
+        "Katana": 0.46,
+        "Great Sword": 0.45,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "15": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.05,
+        "Katana": 0.34,
+        "Great Sword": 0.6,
+        "Great Axe": 0.0,
+        "Colossal Sword": 0.0
+    },
+    "16": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.03,
+        "Katana": 0.26,
+        "Great Sword": 0.69,
+        "Great Axe": 0.01,
+        "Colossal Sword": 0.0
+    },
+    "17": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.02,
+        "Katana": 0.19,
+        "Great Sword": 0.68,
+        "Great Axe": 0.11,
+        "Colossal Sword": 0.0
+    },
+    "18": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.01,
+        "Katana": 0.13,
+        "Great Sword": 0.57,
+        "Great Axe": 0.28,
+        "Colossal Sword": 0.0
+    },
+    "19": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.01,
+        "Katana": 0.09,
+        "Great Sword": 0.46,
+        "Great Axe": 0.45,
+        "Colossal Sword": 0.0
+    },
+    "20": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.01,
+        "Katana": 0.06,
+        "Great Sword": 0.36,
+        "Great Axe": 0.57,
+        "Colossal Sword": 0.0
+    },
+    "21": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.04,
+        "Great Sword": 0.29,
+        "Great Axe": 0.65,
+        "Colossal Sword": 0.02
+    },
+    "22": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.03,
+        "Great Sword": 0.23,
+        "Great Axe": 0.67,
+        "Colossal Sword": 0.07
+    },
+    "23": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.02,
+        "Great Sword": 0.18,
+        "Great Axe": 0.66,
+        "Colossal Sword": 0.13
+    },
+    "24": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.02,
+        "Great Sword": 0.15,
+        "Great Axe": 0.64,
+        "Colossal Sword": 0.2
+    },
+    "25": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.12,
+        "Great Axe": 0.6,
+        "Colossal Sword": 0.26
+    },
+    "26": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.1,
+        "Great Axe": 0.56,
+        "Colossal Sword": 0.32
+    },
+    "27": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.09,
+        "Great Axe": 0.53,
+        "Colossal Sword": 0.37
+    },
+    "28": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.07,
+        "Great Axe": 0.5,
+        "Colossal Sword": 0.42
+    },
+    "29": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.07,
+        "Great Axe": 0.47,
+        "Colossal Sword": 0.46
+    },
+    "30": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.01,
+        "Great Sword": 0.06,
+        "Great Axe": 0.45,
+        "Colossal Sword": 0.49
+    },
+    "31": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.05,
+        "Great Axe": 0.43,
+        "Colossal Sword": 0.51
+    },
+    "32": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.05,
+        "Great Axe": 0.41,
+        "Colossal Sword": 0.54
+    },
+    "33": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.04,
+        "Great Axe": 0.39,
+        "Colossal Sword": 0.56
+    },
+    "34": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.04,
+        "Great Axe": 0.38,
+        "Colossal Sword": 0.58
+    },
+    "35": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.04,
+        "Great Axe": 0.37,
+        "Colossal Sword": 0.59
+    },
+    "36": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.36,
+        "Colossal Sword": 0.61
+    },
+    "37": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.35,
+        "Colossal Sword": 0.62
+    },
+    "38": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.34,
+        "Colossal Sword": 0.63
+    },
+    "39": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.33,
+        "Colossal Sword": 0.64
+    },
+    "40": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.32,
+        "Colossal Sword": 0.65
+    },
+    "41": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.32,
+        "Colossal Sword": 0.65
+    },
+    "42": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.03,
+        "Great Axe": 0.31,
+        "Colossal Sword": 0.66
+    },
+    "43": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.31,
+        "Colossal Sword": 0.67
+    },
+    "44": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.3,
+        "Colossal Sword": 0.67
+    },
+    "45": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.3,
+        "Colossal Sword": 0.68
+    },
+    "46": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.29,
+        "Colossal Sword": 0.69
+    },
+    "47": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.29,
+        "Colossal Sword": 0.69
+    },
+    "48": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.28,
+        "Colossal Sword": 0.69
+    },
+    "49": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.28,
+        "Colossal Sword": 0.7
+    },
+    "50": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.28,
+        "Colossal Sword": 0.7
+    },
+    "51": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.27,
+        "Colossal Sword": 0.71
+    },
+    "52": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.27,
+        "Colossal Sword": 0.71
+    },
+    "53": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.02,
+        "Great Axe": 0.27,
+        "Colossal Sword": 0.71
+    },
+    "54": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.01,
+        "Great Axe": 0.27,
+        "Colossal Sword": 0.72
+    },
+    "55": {
+        "Dagger": 0.0,
+        "Straight Sword": 0.0,
+        "Gauntlet": 0.0,
+        "Katana": 0.0,
+        "Great Sword": 0.01,
+        "Great Axe": 0.26,
+        "Colossal Sword": 0.73
+    }
+}

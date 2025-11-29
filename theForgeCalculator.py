@@ -300,4 +300,3 @@ print("Traits triggered:")
 for trait in result["traits"]:
     print(f"  {trait}")
 
-
