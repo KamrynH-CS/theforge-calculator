@@ -9,68 +9,83 @@
 </head>
 
 <body>
-    <main>
-        <h1>Forge Calculator</h1>
+    <div class="content-wrapper">
 
-        <!-- ORE ROWS -->
-        <div class="ore-input-row">
-            <div class="input-wrapper">
-                <input type="text" id="name1" class="ore-search" placeholder="Select Ore #1">
-                <button class="clear-btn" data-target="name1">×</button>
+        <main>
+            <div id="calculator-box">
+                <h1>Forge Calculator</h1>
+
+                <!-- ORE ROWS -->
+                <div class="ore-input-row">
+                    <div class="input-wrapper">
+                        <input type="text" id="name1" class="ore-search" placeholder="Select Ore #1">
+                        <button class="clear-btn" data-target="name1">×</button>
+                    </div>
+                    <input type="number" id="amt1" placeholder="Amount #1">
+                    <ul class="ore-options" id="options1"></ul>
+                </div>
+
+                <div class="ore-input-row">
+                    <div class="input-wrapper">
+                        <input type="text" id="name2" class="ore-search" placeholder="Select Ore #2">
+                        <button class="clear-btn" data-target="name2">×</button>
+                    </div>
+                    <input type="number" id="amt2" placeholder="Amount #2">
+                    <ul class="ore-options" id="options2"></ul>
+                </div>
+
+                <div class="ore-input-row">
+                    <div class="input-wrapper">
+                        <input type="text" id="name3" class="ore-search" placeholder="Select Ore #3">
+                        <button class="clear-btn" data-target="name3">×</button>
+                    </div>
+                    <input type="number" id="amt3" placeholder="Amount #3">
+                    <ul class="ore-options" id="options3"></ul>
+                </div>
+
+                <div class="ore-input-row">
+                    <div class="input-wrapper">
+                        <input type="text" id="name4" class="ore-search" placeholder="Select Ore #4">
+                        <button class="clear-btn" data-target="name4">×</button>
+                    </div>
+                    <input type="number" id="amt4" placeholder="Amount #4">
+                    <ul class="ore-options" id="options4"></ul>
+                </div>
+
+                <br>
+                <label for="craft_type">Type:</label>
+                <select id="craft_type">
+                    <option value="Weapon">Weapon</option>
+                    <option value="Armor">Armor</option>
+                </select>
+
+                <br><br>
+                <button id="calculateBtn">Calculate</button>
             </div>
-            <input type="number" id="amt1" placeholder="Amount #1">
-            <ul class="ore-options" id="options1"></ul>
+        </main>
+
+        <!-- THIS IS NOW THE ONLY RESULT ELEMENT -->
+        <div id="center-column">
+            <div id="result">
+                <h2 class="result-title">Results</h2>
+                <!-- JS Injected output goes here -->
+            </div>
         </div>
 
-        <div class="ore-input-row">
-            <div class="input-wrapper">
-                <input type="text" id="name2" class="ore-search" placeholder="Select Ore #2">
-                <button class="clear-btn" data-target="name2">×</button>
-            </div>
-            <input type="number" id="amt2" placeholder="Amount #2">
-            <ul class="ore-options" id="options2"></ul>
-        </div>
 
-        <div class="ore-input-row">
-            <div class="input-wrapper">
-                <input type="text" id="name3" class="ore-search" placeholder="Select Ore #3">
-                <button class="clear-btn" data-target="name3">×</button>
-            </div>
-            <input type="number" id="amt3" placeholder="Amount #3">
-            <ul class="ore-options" id="options3"></ul>
-        </div>
+        <aside id="update-log">
+            <h2>Update Log</h2>
+            <ul>
+                <li><strong>2025-11-29:</strong>Changed UI Elements to be cleaner, Improved locations for elements for future Runes Input.</li>
+                <li><strong>2025-11-29:</strong> Fixed Multi-Trait Scaling and Merged Output to 1 line per ore type..
+                </li>
+                <li><strong>2025-11-29:</strong> V1.0 Release of Calculator, Barebone No Styling. Multi Trait Scaling
+                    broken.</li>
+                <li>@Otakusonline With Bug Information.</li>
+            </ul>
+        </aside>
 
-        <div class="ore-input-row">
-            <div class="input-wrapper">
-                <input type="text" id="name4" class="ore-search" placeholder="Select Ore #4">
-                <button class="clear-btn" data-target="name4">×</button>
-            </div>
-            <input type="number" id="amt4" placeholder="Amount #4">
-            <ul class="ore-options" id="options4"></ul>
-        </div>
-
-        <br>
-        <label for="craft_type">Type:</label>
-        <select id="craft_type">
-            <option value="Weapon">Weapon</option>
-            <option value="Armor">Armor</option>
-        </select>
-
-        <br><br>
-        <button id="calculateBtn">Calculate</button>
-
-        <h2 id="result"></h2>
-    </main>
-
-    <aside id="update-log">
-        <h2>Update Log</h2>
-        <ul>
-            <li><strong>2025-11-29:</strong> Fixed Multi-Trait Scaling and Merged Output to 1 line per ore type..</li>
-            <li><strong>2025-11-29:</strong> V1.0 Release of Calculator, Barebone No Styling. Multi Trait Scaling
-                broken.</li>
-            <li>@Otakusonline With Bug Information.</li>
-        </ul>
-    </aside>
+    </div>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E61SFC3B91"></script>
