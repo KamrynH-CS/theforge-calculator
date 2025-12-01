@@ -1,0 +1,166 @@
+/* BASE BODY */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* HEADER */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header-links {
+    display: flex;
+    gap: 30px;
+}
+
+.header-links div {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* SECTION TITLE */
+.section-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 30px 0 15px 0;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+}
+
+/* ISLAND TABS */
+.island-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #2b2b2b;
+    border: 1px solid #555;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.tab-button:hover {
+    background-color: #3a3a3a;
+}
+
+.tab-button.active {
+    background-color: #4a4a4a;
+    border-color: #777;
+}
+
+/* HIDE NON-ACTIVE ISLANDS */
+.island-content {
+    display: none;
+}
+
+.island-content.active {
+    display: block;
+}
+
+/* WIKI TABLE */
+.wiki-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2b2b2b;
+    border: 1px solid #555;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.wiki-table th,
+.wiki-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #444;
+}
+
+.wiki-table th {
+    background-color: #3a3a3a;
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+}
+
+.wiki-table tr:hover {
+    background-color: #383838;
+}
+
+/* ORE IMAGE */
+.ore-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    object-fit: cover;
+}
+
+/* TRAIT COLUMN STYLE */
+.wiki-table td:last-child {
+    color: #888;           /* subtle gray for empty trait */
+    font-style: italic;    /* italic placeholder look */
+    text-align: left;      /* left align trait */
+    width: 120px;          /* fixed width for consistency */
+}
+
+/* LEFT ALIGN RARITY AND MULTIPLIER */
+.wiki-table td:nth-child(2),
+.wiki-table td:nth-child(3) {
+    text-align: left;
+    padding-left: 10px;   /* slight nudge left */
+}
+
+/* OPTIONAL: tighten Ore column spacing a little */
+.wiki-table td:first-child {
+    padding-left: 5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+    .wiki-table th,
+    .wiki-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-links {
+        margin-top: 10px;
+    }
+}
+
+/* RARITY COLORS USING CLASSES */
+.wiki-table td.rarity {
+    font-weight: bold;
+}
+
+.wiki-table td.rarity.common { color: #aaaaaa; }       /* gray */
+.wiki-table td.rarity.uncommon { color: #4caf50; }     /* green */
+.wiki-table td.rarity.rare { color: #2196f3; }         /* blue */
+.wiki-table td.rarity.epic { color: #9c27b0; }         /* purple */
+.wiki-table td.rarity.legendary { color: #ffd700; }    /* gold */
+.wiki-table td.rarity.mythical { color: #f44336; }     /* red */
+.wiki-table td.rarity.divine { color: #ff66cc; }       /* pinkish purple */
