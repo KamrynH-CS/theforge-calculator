@@ -10,6 +10,7 @@
 }
 
 * { box-sizing: border-box; }
+
 body {
     font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     padding: 30px;
@@ -39,9 +40,15 @@ body {
     box-shadow: 0 6px 18px var(--card-shadow);
     overflow: visible;
 }
-#left-panel .panel-inner,
-#right-panel .panel-inner { min-height: 100vh; display: block; }
 
+/* Left/Right panel full height with scroll */
+#left-panel .panel-inner,
+#right-panel .panel-inner {
+    height: calc(100vh - 60px); /* account for body padding */
+    overflow-y: auto;
+}
+
+/* center panel inner */
 .center-inner { padding: 12px; }
 .center-inner #calculator-box { border-radius: 8px; padding: 12px; }
 #calculator-box h1 {
@@ -98,7 +105,7 @@ body {
     flex: 1;
     text-align: center;
     margin: 0 2px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle light outline */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: transparent;
     padding: 8px 14px;
     font-weight: 600;
@@ -113,16 +120,22 @@ body {
     color: white;
     background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
     box-shadow: inset 0 -3px 0 var(--accent);
-    border-color: var(--accent); /* bright accent outline */
+    border-color: var(--accent);
 }
 
-/* Optional hover effect */
 .seg-btn:hover {
     border-color: var(--accent);
 }
 
 /* results */
-.results-inner { margin-top: 18px; border-radius: 8px; padding: 14px; display: none; }
+.results-inner {
+    margin-top: 18px;
+    border-radius: 8px;
+    padding: 14px;
+    display: none;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+}
 .result-title { margin: 0 0 12px; font-size: 18px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
 
 .card { background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid #3c3c3e; border-radius: 8px; padding: 10px; margin-bottom: 12px; }
@@ -130,8 +143,21 @@ body {
 .card-header.small { margin-top: 8px; }
 .card-body { min-height: 30px; color: var(--text); }
 
-.rarity-card { text-align: center; }
-#rarity-value { font-weight: 700; font-size: 18px; }
+/* --- RARITY CARD FIX --- */
+.rarity-card { text-align: left; }
+.rarity-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#rarity-value {
+    font-weight: 700;
+    font-size: 18px;
+}
+#combined-multiplier {
+    font-size: 16px;
+    color: var(--muted);
+}
 
 .two-col { display: grid; grid-template-columns: 1fr 260px; gap: 12px; align-items: start; }
 
@@ -152,9 +178,26 @@ body {
 
 .warning { margin-top: 10px; color: #ffcc66; font-weight:600; }
 
+/* Right panel ore list */
+#ore-list { display: flex; flex-direction: column; gap: 4px; }
+.ore-list-item {
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    cursor: default;
+    font-size: 13px;
+}
+.ore-list-item:hover {
+    background: rgba(58,139,255,0.2);
+}
+
+/* small helper text */
+.muted { color: var(--muted); }
+
+/* media queries */
 @media (max-width: 1100px) {
     .site-frame { grid-template-columns: 1fr; }
-    #left-panel .panel-inner, #right-panel .panel-inner { min-height: 160px; }
+    #left-panel .panel-inner, #right-panel .panel-inner { min-height: 160px; height: auto; overflow-y: auto; }
     .two-col { grid-template-columns: 1fr; }
     .input-wrapper { width: 100%; }
     .ore-amt { width: 140px; }
