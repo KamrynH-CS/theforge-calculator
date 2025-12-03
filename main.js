@@ -2,6 +2,19 @@
     let ores = {};
     let weaponOdds = {};
     let armorOdds = {};
+    let weaponVariants = {};
+
+    // Map singular main-weapon names (as they appear in weaponOdds.json) to
+    // the category keys used in weaponVariants.json (usually pluralized).
+    const categoryMap = {
+        "Dagger": "Daggers",
+        "Straight Sword": "Straight Swords",
+        "Gauntlet": "Gauntlets",
+        "Great Sword": "Great Swords",
+        "Great Axe": "Great Axes",
+        "Katana": "Katanas",
+        "Colossal Sword": "Colossal Swords"
+    };
 
     const oreInputs = [
         { nameEl: () => document.getElementById('name1'), amtEl: () => document.getElementById('amt1'), optionsId: 'options1' },
@@ -26,21 +39,20 @@
     const oreListEl = document.getElementById('ore-list');
     const rarityMultEl = document.getElementById('combined-multiplier');
     const oreSearchEl = document.getElementById('ore-search');
-    const oreSlotsEl = document.getElementById('ore-slots');
 
     let currentCraftType = 'Weapon';
-    let selectedOres = {}; // {oreName: {count: x, slotIndex: y}}
     let debounceTimer = null;
 
-    // Load JSON
     Promise.all([
         fetch('ores.json').then(r => r.json()),
         fetch('weaponOdds.json').then(r => r.json()),
-        fetch('armorOdds.json').then(r => r.json())
-    ]).then(([oresData, wOdds, aOdds]) => {
+        fetch('armorOdds.json').then(r => r.json()),
+        fetch('weaponVariants.json').then(r => r.json())
+    ]).then(([oresData, wOdds, aOdds, wVariants]) => {
         ores = oresData;
         weaponOdds = wOdds;
         armorOdds = aOdds;
+        weaponVariants = wVariants;
         initUI();
         renderOreList();
         renderEmptyResults();
@@ -49,7 +61,6 @@
     function initUI() {
         const oreNames = Object.keys(ores).sort((a, b) => a.localeCompare(b));
 
-        // Ore Inputs
         oreInputs.forEach((row) => {
             const optionsList = document.getElementById(row.optionsId);
             optionsList.innerHTML = '';
@@ -94,13 +105,11 @@
             row.amtEl().addEventListener('input', () => doAutoUpdate());
         });
 
-        // Rune Inputs
         runeInputs.forEach(row => {
             row.nameEl().addEventListener('input', doAutoUpdate);
             row.amtEl().addEventListener('input', doAutoUpdate);
         });
 
-        // Number buttons
         document.querySelectorAll('.num-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const target = document.getElementById(btn.dataset.target);
@@ -113,7 +122,6 @@
             });
         });
 
-        // Craft type selector
         segBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 segBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
@@ -123,6 +131,8 @@
                 doAutoUpdate();
             });
         });
+
+        oreSearchEl.addEventListener('input', () => renderOreList(oreSearchEl.value));
     }
 
     function renderOreList(filterText = '') {
@@ -130,6 +140,7 @@
         const sortedOres = Object.entries(ores)
             .sort((a, b) => b[1].multiplier - a[1].multiplier)
             .filter(([name]) => name.toLowerCase().includes(filterText.toLowerCase()));
+
         sortedOres.forEach(([name, data]) => {
             const li = document.createElement('li');
             li.style.padding = '4px 6px';
@@ -183,8 +194,6 @@
         });
     }
 
-    oreSearchEl.addEventListener('input', () => renderOreList(oreSearchEl.value));
-
     function showOrHideClear(inputEl) {
         const clearBtn = inputEl.parentElement.querySelector('.clear-btn');
         clearBtn.style.display = inputEl.value ? 'block' : 'none';
@@ -228,6 +237,59 @@
         oddsArea.innerHTML = '<div class="muted">Odds for <strong>' + currentCraftType + '</strong> will appear here when eligible</div>';
     }
 
+    // Try to return a simple fraction for common denominators first (1,2,4,8,16,32,64).
+    // If not close to any of those, fall back to a best approximation up to maxDenominator.
+    function simpleOrApproxFraction(decimal, maxDenominator = 64) {
+        decimal = Math.max(0, Math.min(1, decimal));
+        const denominators = [1, 2, 4, 8, 16, 32, 64];
+        const EPS = 1e-8;
+        for (const d of denominators) {
+            const n = Math.round(decimal * d);
+            if (Math.abs(decimal - n / d) < EPS) {
+                const g = gcd(n, d) || 1;
+                return `${n / g}/${d / g}`;
+            }
+        }
+        // fallback to general best approx
+        return fraction(decimal, maxDenominator);
+    }
+
+    function fraction(decimal, maxDenominator = 100) {
+        if (decimal === 1) return "1/1";
+        decimal = Math.max(0, Math.min(1, decimal));
+
+        let bestNumerator = 0, bestDenominator = 1, minDiff = Infinity;
+        for (let d = 1; d <= maxDenominator; d++) {
+            const n = Math.round(decimal * d);
+            const diff = Math.abs(decimal - n / d);
+            if (diff < minDiff) {
+                bestNumerator = n;
+                bestDenominator = d;
+                minDiff = diff;
+            }
+        }
+
+        const div = gcd(bestNumerator, bestDenominator) || 1;
+        const num = Math.round(bestNumerator / div);
+        const den = Math.round(bestDenominator / div);
+        // guard against 0/x
+        if (num === 0) return `0/1`;
+        return `${num}/${den}`;
+    }
+
+    function gcd(a, b) {
+        a = Math.abs(Math.round(a));
+        b = Math.abs(Math.round(b));
+        if (!a) return b;
+        if (!b) return a;
+        while (b) {
+            const t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
+    }
+
     function renderResults(result) {
         resultsWrapper.style.display = 'block';
         rarityValue.textContent = result.rarity;
@@ -247,25 +309,107 @@
         }
         compositionArea.appendChild(compList);
 
-        if (result.traits.length === 0) { traitsArea.innerHTML = '<div class="traits-none">No traits transfer</div>'; }
-        else result.traits.forEach(tr => {
-            const tbox = document.createElement('div'); tbox.className = 'trait-box';
-            const title = document.createElement('div'); title.className = 'trait-title'; title.textContent = tr.ore || 'Ore';
-            tbox.appendChild(title);
-            tr.lines.forEach(line => { const p = document.createElement('div'); p.className = 'trait-line'; p.textContent = line; tbox.appendChild(p); });
-            traitsArea.appendChild(tbox);
-        });
-
-        if (!result.odds || Object.keys(result.odds).length === 0) { oddsArea.textContent = 'No odds data'; }
-        else {
-            const grid = document.createElement('div'); grid.className = 'odds-grid';
-            for (const [key, val] of Object.entries(result.odds)) {
-                const item = document.createElement('div'); item.className = 'odds-row';
-                item.innerHTML = `<div class="odds-name">${key}</div><div class="odds-pct">${(val * 100).toFixed(1)}%</div>`;
-                grid.appendChild(item);
-            }
-            oddsArea.appendChild(grid);
+        if (result.traits.length === 0) {
+            traitsArea.innerHTML = '<div class="traits-none">No traits transfer</div>';
+        } else {
+            result.traits.forEach(tr => {
+                const tbox = document.createElement('div');
+                tbox.className = 'trait-box';
+                const title = document.createElement('div');
+                title.className = 'trait-title';
+                title.textContent = tr.ore || 'Ore';
+                tbox.appendChild(title);
+                tr.lines.forEach(line => {
+                    const p = document.createElement('div');
+                    p.className = 'trait-line';
+                    p.textContent = line;
+                    tbox.appendChild(p);
+                });
+                traitsArea.appendChild(tbox);
+            });
         }
+
+        // Build Odds grid and place variants directly under each weapon row
+        if (!result.odds || Object.keys(result.odds).length === 0) {
+            oddsArea.textContent = 'No odds data';
+            return;
+        }
+
+        const grid = document.createElement('div');
+        grid.className = 'odds-grid';
+
+        for (const [weaponName, mainChance] of Object.entries(result.odds)) {
+            // main row (weapon title + percent)
+            const item = document.createElement('div');
+            item.className = 'odds-row';
+            item.style.flexDirection = 'column'; // stack header + variants
+            item.style.alignItems = 'stretch';
+
+            const headerRow = document.createElement('div');
+            headerRow.style.display = 'flex';
+            headerRow.style.justifyContent = 'space-between';
+            headerRow.style.alignItems = 'center';
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'odds-name';
+            nameDiv.textContent = weaponName;
+
+            const pctDiv = document.createElement('div');
+            pctDiv.className = 'odds-pct';
+            pctDiv.textContent = `${(mainChance * 100).toFixed(1)}%`.replace(/\.0%$/, '%');
+
+            headerRow.appendChild(nameDiv);
+            headerRow.appendChild(pctDiv);
+            item.appendChild(headerRow);
+
+            // if weapon variants exist and craft type is weapon, add a nested list
+            if (currentCraftType === 'Weapon') {
+                const categoryKey = categoryMap[weaponName];
+                if (categoryKey && weaponVariants[categoryKey]) {
+                    const ul = document.createElement('ul');
+                    ul.style.listStyle = 'none';
+                    ul.style.paddingLeft = '12px';
+                    ul.style.margin = '8px 0 0 0';
+                    // iterate variants in the category
+                    const catObj = weaponVariants[categoryKey];
+                    Object.keys(catObj).forEach(variantName => {
+                        const variantEntries = catObj[variantName];
+                        variantEntries.forEach(v => {
+                            const li = document.createElement('li');
+                            li.style.padding = '2px 0';
+
+                            const frac = simpleOrApproxFraction(typeof v.chance === 'number' ? v.chance : 1, 64);
+
+                            // ensure multiplier valid
+                            let cm = Number(result.combinedMultiplier);
+                            if (!isFinite(cm) || cm <= 0) cm = 1;
+
+                            // scaled damage
+                            const scaledDmg = (v.dmg * (cm * 2)).toFixed(2);
+
+                            // DPS = damage / time
+                            const dps = (scaledDmg / v.time).toFixed(2);
+
+                            // debug output
+                            console.debug(`[VariantScale] ${weaponName} > ${variantName}: base=${v.dmg} cm=${cm} scaled=${scaledDmg} time=${v.time} dps=${dps}`);
+
+                            // final displayed line
+                            li.textContent = `${variantName} ${frac} — ${scaledDmg} DMG | ${v.time} Cycle's/Attack | ${dps} DPS`;
+
+                            ul.appendChild(li);
+                        });
+
+                    });
+                    item.appendChild(ul);
+                } else {
+                    // no variants - optionally show nothing (keeps UI compact)
+                }
+            }
+
+            grid.appendChild(item);
+        }
+
+        oddsArea.appendChild(grid);
     }
 
     function calculateCombinedMultiplier(selectedOres) {
@@ -288,7 +432,11 @@
         const totalCount = Object.values(selectedOres).reduce((a, b) => a + b, 0);
         const MAX_ODDS_ORE_COUNT = 55;
         const oddsKey = totalCount > MAX_ODDS_ORE_COUNT ? MAX_ODDS_ORE_COUNT : totalCount;
-        const odds = oddsDict[oddsKey] || oddsDict[Math.max(...Object.keys(oddsDict))];
+        const odds = oddsDict[oddsKey];
+
+        if (!odds) {
+            console.warn(`Odds for key ${oddsKey} not found in ${craftType} odds JSON`);
+        }
 
         const composition = {};
         for (const [ore, count] of Object.entries(selectedOres)) composition[ore] = count / totalCount * 100;
@@ -323,7 +471,7 @@
         const rarity = ores[highestOre]?.rarity || "Unknown";
 
         const sortedOdds = Object.fromEntries(
-            Object.entries(odds).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1])
+            Object.entries(odds || {}).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1])
         );
 
         return { composition, traits, combinedMultiplier, odds: sortedOdds, rarity };

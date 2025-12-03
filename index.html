@@ -25,7 +25,6 @@
                     <ul id="ore-list"></ul>
                 </div>
 
-
                 <!-- BOTTOM: Auto-fill Dev text (half height) -->
                 <div class="half-panel" id="autofill-box">
                     <p>Autofill/Auto Spread Shortcuts</p>
@@ -109,7 +108,7 @@
                         <!-- RIGHT: RUNE INPUTS -->
                         <div class="calc-right">
 
-                            <!-- RUNE INPUT 1 -->
+                            <!-- RUNE INPUTS 1-3 -->
                             <div class="ore-input-row rune-input-row">
                                 <div class="input-wrapper">
                                     <input id="rune1" class="rune-search" placeholder="Rune Slot #1" autocomplete="off">
@@ -122,7 +121,6 @@
                                 </div>
                             </div>
 
-                            <!-- RUNE INPUT 2 -->
                             <div class="ore-input-row rune-input-row">
                                 <div class="input-wrapper">
                                     <input id="rune2" class="rune-search" placeholder="Rune Slot #2" autocomplete="off">
@@ -135,7 +133,6 @@
                                 </div>
                             </div>
 
-                            <!-- RUNE INPUT 3 -->
                             <div class="ore-input-row rune-input-row">
                                 <div class="input-wrapper">
                                     <input id="rune3" class="rune-search" placeholder="Rune Slot #3" autocomplete="off">
@@ -198,6 +195,12 @@
                         <div class="card odds-card">
                             <div class="card-header">Odds</div>
                             <div id="odds-area" class="card-body"></div>
+
+                            <!-- Weapon Variants section -->
+                            <div class="card-header small">Variants</div>
+                            <div id="variants-area" class="card-body">
+                                <div class="muted">Variants will appear here when eligible</div>
+                            </div>
                         </div>
 
                     </div>
@@ -224,14 +227,12 @@
 
     </div>
 
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E61SFC3B91"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-E61SFC3B91');
     </script>
     
