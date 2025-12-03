@@ -1,243 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Forge Calculator</title>
-    <link rel="stylesheet" href="index.css" />
-</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Moved</title>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #cccccc;
+        }
+        a.button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #4a8cff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+        a.button:hover {
+            background: #2e6fe6;
+        }
+    </style>
+</head>
 <body>
 
-    <div class="site-frame">
+    <div class="container">
+        <h1>This website has moved</h1>
+        <p>We’ve upgraded to a new domain! Click below to go to the new home of the Forge Calculator.</p>
 
-        <!-- LEFT PANEL -->
-        <aside id="left-panel" class="panel">
-            <div class="panel-inner">
-
-                <!-- TOP: Ore List (half height) -->
-                <div class="half-panel" id="ore-list-box">
-                    <div class="ore-header">
-                        <h3>Select Ores</h3>
-                        <input type="text" id="ore-search" placeholder="Search..." />
-                    </div>
-                    <ul id="ore-list"></ul>
-                </div>
-
-                <!-- BOTTOM: Auto-fill Dev text (half height) -->
-                <div class="half-panel" id="autofill-box">
-                    <p>Autofill/Auto Spread Shortcuts</p>
-                </div>
-
-            </div>
-        </aside>
-
-        <!-- CENTER PANEL -->
-        <main id="center-panel" class="panel">
-            <div class="panel-inner center-inner">
-                <div id="calculator-box">
-                    <h1>Forge Calculator</h1>
-
-                    <div class="calc-flex">
-
-                        <!-- LEFT: ORE INPUTS -->
-                        <div class="calc-left">
-                            <div class="ore-rows" id="ore-rows">
-
-                                <!-- 4 ORE ROWS -->
-                                <div class="ore-input-row">
-                                    <div class="input-wrapper">
-                                        <input id="name1" class="ore-search" placeholder="Select Ore #1"
-                                            autocomplete="off">
-                                        <button class="clear-btn" data-target="name1">×</button>
-                                        <ul class="ore-options" id="options1"></ul>
-                                    </div>
-                                    <div class="number-wrapper">
-                                        <button class="num-btn minus" data-target="amt1">−</button>
-                                        <input id="amt1" class="ore-amt" type="number" min="0">
-                                        <button class="num-btn plus" data-target="amt1">+</button>
-                                    </div>
-                                </div>
-
-                                <div class="ore-input-row">
-                                    <div class="input-wrapper">
-                                        <input id="name2" class="ore-search" placeholder="Select Ore #2"
-                                            autocomplete="off">
-                                        <button class="clear-btn" data-target="name2">×</button>
-                                        <ul class="ore-options" id="options2"></ul>
-                                    </div>
-                                    <div class="number-wrapper">
-                                        <button class="num-btn minus" data-target="amt2">−</button>
-                                        <input id="amt2" class="ore-amt" type="number" min="0">
-                                        <button class="num-btn plus" data-target="amt2">+</button>
-                                    </div>
-                                </div>
-
-                                <div class="ore-input-row">
-                                    <div class="input-wrapper">
-                                        <input id="name3" class="ore-search" placeholder="Select Ore #3"
-                                            autocomplete="off">
-                                        <button class="clear-btn" data-target="name3">×</button>
-                                        <ul class="ore-options" id="options3"></ul>
-                                    </div>
-                                    <div class="number-wrapper">
-                                        <button class="num-btn minus" data-target="amt3">−</button>
-                                        <input id="amt3" class="ore-amt" type="number" min="0">
-                                        <button class="num-btn plus" data-target="amt3">+</button>
-                                    </div>
-                                </div>
-
-                                <div class="ore-input-row">
-                                    <div class="input-wrapper">
-                                        <input id="name4" class="ore-search" placeholder="Select Ore #4"
-                                            autocomplete="off">
-                                        <button class="clear-btn" data-target="name4">×</button>
-                                        <ul class="ore-options" id="options4"></ul>
-                                    </div>
-                                    <div class="number-wrapper">
-                                        <button class="num-btn minus" data-target="amt4">−</button>
-                                        <input id="amt4" class="ore-amt" type="number" min="0">
-                                        <button class="num-btn plus" data-target="amt4">+</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- RIGHT: RUNE INPUTS -->
-                        <div class="calc-right">
-
-                            <!-- RUNE INPUTS 1-3 -->
-                            <div class="ore-input-row rune-input-row">
-                                <div class="input-wrapper">
-                                    <input id="rune1" class="rune-search" placeholder="Rune Slot #1" autocomplete="off">
-                                    <button class="clear-btn" data-target="rune1">×</button>
-                                </div>
-                                <div class="number-wrapper">
-                                    <button class="num-btn minus" data-target="runeAmt1">−</button>
-                                    <input id="runeAmt1" class="rune-amt" type="number" min="0">
-                                    <button class="num-btn plus" data-target="runeAmt1">+</button>
-                                </div>
-                            </div>
-
-                            <div class="ore-input-row rune-input-row">
-                                <div class="input-wrapper">
-                                    <input id="rune2" class="rune-search" placeholder="Rune Slot #2" autocomplete="off">
-                                    <button class="clear-btn" data-target="rune2">×</button>
-                                </div>
-                                <div class="number-wrapper">
-                                    <button class="num-btn minus" data-target="runeAmt2">−</button>
-                                    <input id="runeAmt2" class="rune-amt" type="number" min="0">
-                                    <button class="num-btn plus" data-target="runeAmt2">+</button>
-                                </div>
-                            </div>
-
-                            <div class="ore-input-row rune-input-row">
-                                <div class="input-wrapper">
-                                    <input id="rune3" class="rune-search" placeholder="Rune Slot #3" autocomplete="off">
-                                    <button class="clear-btn" data-target="rune3">×</button>
-                                </div>
-                                <div class="number-wrapper">
-                                    <button class="num-btn minus" data-target="runeAmt3">−</button>
-                                    <input id="runeAmt3" class="rune-amt" type="number" min="0">
-                                    <button class="num-btn plus" data-target="runeAmt3">+</button>
-                                </div>
-                            </div>
-
-                            <!-- Enhancement -->
-                            <div class="enhancement-block">
-                                <div class="ore-input-row enh-input-row">
-                                    <div class="input-wrapper">
-                                        <div class="enh-label">Enhancement Level</div>
-                                    </div>
-                                    <div class="number-wrapper">
-                                        <button class="num-btn minus" data-target="enhAmt">−</button>
-                                        <input id="enhAmt" class="enh-amt" type="number" min="0">
-                                        <button class="num-btn plus" data-target="enhAmt">+</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Weapon / Armor Selector -->
-                    <div id="trait-selector">
-                        <button class="seg-btn active" data-type="Weapon">Weapon</button>
-                        <button class="seg-btn" data-type="Armor">Armor</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RESULTS -->
-            <div id="results-wrapper" class="panel-inner results-inner">
-
-                <div id="results-content">
-
-                    <div id="rarity-mult-box" class="card rarity-card">
-                        <div class="rarity-row">
-                            <div id="rarity-value">—</div>
-                            <div id="combined-multiplier">Mult: ×0.00</div>
-                        </div>
-                    </div>
-
-                    <div id="results-split-box">
-
-                        <div class="card comp-card">
-                            <div class="card-header">Composition</div>
-                            <div id="composition-area" class="card-body"></div>
-
-                            <div class="card-header small">Traits</div>
-                            <div id="traits-area" class="card-body"></div>
-                        </div>
-
-                        <div class="card odds-card">
-                            <div class="card-header">Odds</div>
-                            <div id="odds-area" class="card-body"></div>
-
-                            <!-- Weapon Variants section -->
-                            <div class="card-header small">Variants</div>
-                            <div id="variants-area" class="card-body">
-                                <div class="muted">Variants will appear here when eligible</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div id="warning" class="warning" style="display:none;"></div>
-
-                </div>
-
-            </div>
-
-        </main>
-
-        <!-- RIGHT PANEL -->
-        <aside id="right-panel" class="panel">
-            <div class="panel-inner">
-                <div class="half-panel">
-                    <p>Plan to Add Rune Selector Page</p>
-                </div>
-                <div class="half-panel">
-                    <p>Dev: @Otakusonline</p>
-                </div>
-            </div>
-        </aside>
-
+        <!-- CHANGE THE LINK HERE -->
+        <a class="button" href="forgecalculator-neon.vercel.app">Go to the new site</a>
     </div>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E61SFC3B91"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-E61SFC3B91');
-    </script>
-    
-    <script src="main.js"></script>
-
 </body>
-
 </html>
