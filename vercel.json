@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://forgecalculator.tech/$1",
+      "permanent": true
+    }
+  ]
+}
